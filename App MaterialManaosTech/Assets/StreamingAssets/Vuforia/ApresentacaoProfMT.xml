@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="pg12" size="5.000000 5.000000" />
+    <ImageTarget name="pg47" size="5.000000 5.000000" />
+    <ImageTarget name="pg44" size="5.000000 5.000000" />
+    <ImageTarget name="pg39" size="5.000000 5.000000" />
+    <ImageTarget name="pg37" size="5.000000 5.000000" />
+    <ImageTarget name="pg32-2" size="5.000000 5.000000" />
+    <ImageTarget name="pg32-1" size="5.000000 5.000000" />
+    <ImageTarget name="pg28" size="5.000000 5.000000" />
+    <ImageTarget name="pg25" size="5.000000 5.000000" />
+    <ImageTarget name="pg23" size="5.000000 5.000000" />
+    <ImageTarget name="pg19" size="5.000000 5.000000" />
+    <ImageTarget name="pg17" size="5.000000 5.000000" />
+    <ImageTarget name="pg9" size="5.000000 4.987469" />
+    <ImageTarget name="pg6" size="5.000000 5.000000" />
+    <ImageTarget name="CodigoVideoPartesScratch" size="5.000000 5.000000" />
+    <ImageTarget name="CodigoVideoTutorialScratch" size="5.000000 5.012563" />
+    <ImageTarget name="QRCodigos" size="5.000000 5.012563" />
+  </Tracking>
+</QCARConfig>
