@@ -15,6 +15,7 @@ public class PlayerMovie : MonoBehaviour {
     public GameObject fullscreen;
     public GameObject MainObject;
     public VideoPlayer FullScreenPlayer;
+    public GameObject FullScreenControl;
     
 	// Use this for initialization
 	void Start () {
@@ -29,6 +30,7 @@ public class PlayerMovie : MonoBehaviour {
 
     public void Play()
     {
+        
         player.Play();
         playButton.SetActive(false);
         PauseButtonInvisible.SetActive(true);
@@ -47,10 +49,13 @@ public class PlayerMovie : MonoBehaviour {
         fullscreen.SetActive(true);
         FullScreenPlayer.frame = player.frame;
         MainObject.SetActive(false);
+        FullScreenControl.SetActive(true);
     }
 
     public void FullScreenExit()
     {
         fullscreen.SetActive(false);
+        FullScreenControl.SetActive(false);
+        player.frame = FullScreenPlayer.frame;
     }
   }

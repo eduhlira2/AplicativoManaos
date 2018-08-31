@@ -23,10 +23,17 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     protected TrackableBehaviour mTrackableBehaviour;
     public GameObject obj3D;
     public GameObject waitingScreen;
+    public GameObject playButton;
+    public GameObject InvisiblePauseButton;
     public VideoPlayer player;
-   private int currentFrame;
-    private float timer = 5f;
-    private bool lostVideo; //serve para controlar o tempo que o video sumiu, para aparecer novamente caso volte para o mesmo target.
+    private string currentFrame;
+    private int currentFrameInt;
+    private int frameToReturn;
+    private bool lostTarget;
+    private float timer;
+    public GameObject FullScreenMode;
+   
+  
 
     #endregion // PROTECTED_MEMBER_VARIABLES
 
@@ -62,7 +69,12 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
+            lostTarget = false;
+            playButton.SetActive(true);
+            InvisiblePauseButton.SetActive(false);
             obj3D.SetActive(true);
+            frameToReturn = currentFrameInt;
+            player.frame = frameToReturn;
             waitingScreen.SetActive(false);
             OnTrackingFound();
         }
@@ -70,8 +82,18 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                  newStatus == TrackableBehaviour.Status.NO_POSE)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+            player.Pause();
+            currentFrame = player.frame.ToString();
+            int.TryParse(currentFrame, out currentFrameInt);
+            timer = 5f;
+            lostTarget = true;
+            if (FullScreenMode.gameObject.active == false)
+            {
+                
+                waitingScreen.SetActive(true);
+            }
+            
             obj3D.SetActive(false);
-            waitingScreen.SetActive(true);
             OnTrackingLost();
         }
         else
@@ -80,6 +102,21 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             // Vuforia is starting, but tracking has not been lost or found yet
             // Call OnTrackingLost() to hide the augmentations
             OnTrackingLost();
+        }
+    }
+
+    void Update()
+    {
+        if(lostTarget== true)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0.0f)
+            {
+                currentFrameInt = 0;
+                Debug.Log("O video Reiniciou");
+                lostTarget = false;
+            }
+            
         }
     }
 
