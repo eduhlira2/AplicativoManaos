@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\AnimationTimer.cs" />
     <Compile Include="Assets\Scripts\PlayerMovie.cs" />
+    <Compile Include="Assets\Vuforia\Scripts\ChangeFullScreenVideo.cs" />
     <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />
     <Compile Include="Assets\Vuforia\Scripts\DefaultTrackableEventHandler.cs" />
     <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />

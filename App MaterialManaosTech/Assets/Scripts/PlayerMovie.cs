@@ -46,16 +46,23 @@ public class PlayerMovie : MonoBehaviour {
 
     public void FullScreen()
     {
-        fullscreen.SetActive(true);
         FullScreenPlayer.frame = player.frame;
-        MainObject.SetActive(false);
+       fullscreen.SetActive(true);
+
+        player.Pause();
+        Debug.Log("Pausou o negocio");
+        PauseButtonInvisible.SetActive(false);
+        playButton.SetActive(true);
+        
+        //MainObject.SetActive(false);
         FullScreenControl.SetActive(true);
     }
 
     public void FullScreenExit()
     {
+        player.frame = FullScreenPlayer.frame;
         fullscreen.SetActive(false);
         FullScreenControl.SetActive(false);
-        player.frame = FullScreenPlayer.frame;
+       
     }
   }
